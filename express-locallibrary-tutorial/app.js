@@ -19,14 +19,15 @@ const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
 // development mongoose connection
 dotenv.config();
-console.log(process.env)
 const dev_db_url = process.env.MONGOLAB_URI;
 // deployed site connection
 const mongoDB = process.env.MONGODB_URI || dev_db_url;
 
 main().catch((err) => console.log(err));
+
 async function main() {
   await mongoose.connect(mongoDB);
+  console.log("Connected");
 }
 
 
